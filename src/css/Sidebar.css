@@ -1,0 +1,38 @@
+
+  
+  .sidebar-logo {
+    width: 350px; 
+    height: auto;
+    display: block;
+    margin: 0 auto 20px; 
+  }
+  
+  .menu-items {
+    list-style: none;
+    font-size: 21px;
+    text-align: left;
+    padding: 25px;
+    font-weight: 300;
+    margin: 25px;
+  }
+  
+  .menu-items li {
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .menu-items li:hover {
+    color: #007bff; 
+  }
+  
+  .icon {
+    margin-right: 5px;
+  }
+  .sidebar {
+    flex: 0 0 20%; 
+    border-right: 1px solid #ebebeb;
+    background-color: #ffffff; 
+    padding: 20px;
+  }
+  

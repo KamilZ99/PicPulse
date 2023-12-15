@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.newpostss{
+  text-align: center;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh; 
+}
+
+.main-content {
+  flex: 0 0 75%; 
+  padding: 20px;
+ 
+}
+
