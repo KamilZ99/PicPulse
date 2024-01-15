@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import logo from '../img/picpulse.png';
 import '../css/Sidebar.css';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faImages } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -25,7 +26,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isLoggedIn, onRegisterClick, onLoginC
         {isLoggedIn && (
   <>
              <li><Link to="/profile"><FontAwesomeIcon icon={faUser} className="icon" /> Profil</Link></li>
-
+             <li><Link to="/gallery"><FontAwesomeIcon icon={faImages} className="icon" /> Galeria</Link></li>
+             <li><Link to="/album"><FontAwesomeIcon icon={faImages} className="icon" /> Album</Link></li>
     <li onClick={onLogout}><FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Wyloguj</li>
   </>
 )}

@@ -10,6 +10,9 @@ import { getPosts } from './services/api';
 import './App.css';
 import RegisterPopup from './components/RegisterPopup';
 import LoginPopup from './components/LoginPopup';
+import Gallery from './components/Gallery';
+import Album from './components/Album';
+
 
 const App = () => {
   const [posts, setPosts] = useState<PostType[]>([]);
@@ -84,6 +87,9 @@ const App = () => {
                 <PostList posts={posts} onDelete={handleDeletePost} />
               </>
             } />
+       <Route path="/gallery" element={<Gallery />} />
+       <Route path="/album" element={<Album />} />
+
           </Routes>
         </main>
       </div>

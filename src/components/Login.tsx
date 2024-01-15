@@ -12,7 +12,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
     e.preventDefault();
     const storedUsername = sessionStorage.getItem('username');
     const storedPassword = sessionStorage.getItem('password');
-
+    sessionStorage.setItem('username', username);
     if (username === storedUsername && password === storedPassword) {
       alert('Zalogowano pomyślnie!');
       onLoginSuccess();

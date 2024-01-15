@@ -1,0 +1,64 @@
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .image-container {
+    position: relative;
+  }
+  
+  .gallery-image {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .image-heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .image-heart.liked {
+    color: red; 
+  }
+  .image-likes {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    z-index: 10;
+  }
+  .add-image-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-image-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .add-image-button {
+    background-color: #4267B2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-image-button:hover {
+    background-color: #365899;
+  }
+  

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect  } from 'react';
 import { createPost } from '../services/api';
 import { Post as PostType } from '../types/post';
 import '../css/NewPost.css';
@@ -11,9 +11,23 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ onAddPost }) => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [userId, setUserId] = useState<number | null>(null);
+
+  useEffect(() => {
+    const storedUserId = sessionStorage.getItem('userId');
+    if (storedUserId) {
+      setUserId(parseInt(storedUserId));
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!sessionStorage.getItem('isLoggedIn')) {
+      alert('Musisz być zalogowany, aby dodać post.');
+      return;
+    }
+
+
     const newPost = {
       title,
       body,
