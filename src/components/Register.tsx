@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-
-const Register = () => {
+import '../css/Auth.css';
+interface RegisterProps {
+  onRegisterSuccess: () => void;
+}
+const Register: React.FC<RegisterProps> = ({ onRegisterSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -8,14 +11,17 @@ const Register = () => {
     e.preventDefault();
     sessionStorage.setItem('username', username);
     sessionStorage.setItem('password', password);
-
     const token = btoa(username + ':' + password);
     sessionStorage.setItem('token', token);
     alert('Rejestracja zakończona pomyślnie!');
+    onRegisterSuccess();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="auth-form">
+    <div className="auth-box">
+      <form onSubmit={handleSubmit}>
+      <h1 className='loginName'> Rejestracja. </h1>
       <input
         type="text"
         value={username}
@@ -30,6 +36,8 @@ const Register = () => {
       />
       <button type="submit">Zarejestruj się</button>
     </form>
+    </div>
+    </div>
   );
 };
 

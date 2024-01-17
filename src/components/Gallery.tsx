@@ -9,7 +9,7 @@ import {Image } from '../types/image';
 const Gallery = () => {
   const [newImage, setNewImage] = useState('');
   const [images, setImages] = useState<Image[]>([]);
-  const username = sessionStorage.getItem('username');
+  const username = sessionStorage.getItem('username'); 
 
  useEffect(() => {
   const savedImages = JSON.parse(localStorage.getItem('galleryImages') || '[]').map((image: Image) => ({

@@ -1,39 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Post as PostType } from '../types/post';
-import CommentForm from './CommentForm';
+import React, { useState } from 'react';
+import { Post as PostType, Comment as CommentType } from '../types/post';
 import '../css/Post.css';
 
 interface PostListProps {
   posts: PostType[];
+  comments: CommentType[];
   onDelete: (postId: number) => void;
 }
 
-interface Comments {
-  [postId: number]: string[];
-}
-
-const PostList: React.FC<PostListProps> = ({ posts, onDelete }) => {
+const PostList: React.FC<PostListProps> = ({ posts, comments, onDelete }) => {
   const [selectedPost, setSelectedPost] = useState<number | null>(null);
-  const [comments, setComments] = useState<Comments>(() => {
-    const savedComments = sessionStorage.getItem('comments');
-    return savedComments ? JSON.parse(savedComments) : {};
-  });
-
-  useEffect(() => {
-
-    sessionStorage.setItem('comments', JSON.stringify(comments));
-  }, [comments]);
-
-  const handleAddComment = (postId: number, comment: string) => {
-    setComments(prev => {
-      const updatedComments = {
-        ...prev,
-        [postId]: [...(prev[postId] || []), comment]
-      };
-      return updatedComments;
-    });
-    setSelectedPost(null);
-  };
 
   return (
     <div className="post-list">
@@ -45,22 +21,19 @@ const PostList: React.FC<PostListProps> = ({ posts, onDelete }) => {
             <img src={post.imageUrl} alt="Post" className="post-image" />
           )}
           <button onClick={() => onDelete(post.id)} className="delete-button">Usuń</button>
-          <button onClick={() => setSelectedPost(post.id)} className="comment-button">Komentuj</button>
 
           <div className="comments-section">
             <h4>Komentarze: </h4>
-            {comments[post.id]?.map((comment, index) => (
-              <p key={index}>{comment}</p>
+            {comments.filter(comment => comment.postId === post.id).map((comment, index) => (
+              <div key={index}>
+                <p><strong>{comment.name}</strong> ({comment.email})</p>
+                <p>{comment.body}</p>
+              </div>
             ))}
           </div>
         </div>
       ))}
-      {selectedPost !== null && (
-        <CommentForm
-          onAddComment={(comment) => handleAddComment(selectedPost, comment)}
-          onClose={() => setSelectedPost(null)}
-        />
-      )}
+
     </div>
   );
 };

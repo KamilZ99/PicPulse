@@ -15,16 +15,7 @@
     font-weight: 300;
     margin: 25px;
   }
-  .popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 1000;
-  }
+ 
   .sidebar .menu-items li a {
     color: inherit; 
     text-decoration: none; 
@@ -47,7 +38,9 @@
   .sidebar {
     flex: 0 0 20%; 
     border-right: 1px solid #ebebeb;
-    background-color: #ffffff; 
+    background-color: #ffffff;
     padding: 20px;
+    height: 100vh; 
+    box-sizing: border-box; 
   }
   

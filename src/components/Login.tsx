@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import '../css/Auth.css';
 interface LoginProps {
   onLoginSuccess: () => void;
 }
@@ -12,7 +12,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
     e.preventDefault();
     const storedUsername = sessionStorage.getItem('username');
     const storedPassword = sessionStorage.getItem('password');
-    sessionStorage.setItem('username', username);
+
     if (username === storedUsername && password === storedPassword) {
       alert('Zalogowano pomyślnie!');
       onLoginSuccess();
@@ -22,7 +22,12 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="auth-form-container">
+    <div className="auth-form">
+      
+    <div className="auth-box">
+      <form onSubmit={handleSubmit}>
+            <h1 className='loginName'> Logowanie. </h1>
       <input
         type="text"
         value={username}
@@ -37,6 +42,8 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
       />
       <button type="submit">Zaloguj się</button>
     </form>
+    </div>
+    </div></div>
   );
 };
 

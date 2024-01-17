@@ -1,22 +1,26 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faHome, faSearch, faUser, faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHome, 
+  faUser, 
+  faSignOutAlt, 
+  faImages,
+  faClipboardList, 
+  faUsers 
+} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import logo from '../img/picpulse.png';
 import '../css/Sidebar.css';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { faImages } from '@fortawesome/free-solid-svg-icons';
-
+import { faPhotoVideo } from '@fortawesome/free-solid-svg-icons';
 
 
 interface SidebarProps {
   isLoggedIn: boolean;
-  onRegisterClick: () => void;
-  onLoginClick: () => void;
   onLogout: () => void; 
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isLoggedIn, onRegisterClick, onLoginClick, onLogout }) => {
+
+const Sidebar: React.FC<SidebarProps> = ({ isLoggedIn, onLogout }) => {
   return (
     <aside className="sidebar">
       <img src={logo} alt="Logo" className="sidebar-logo" />
@@ -24,18 +28,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isLoggedIn, onRegisterClick, onLoginC
       <li><Link to="/"><FontAwesomeIcon icon={faHome} className="icon" /> Home</Link></li>
 
         {isLoggedIn && (
-  <>
-             <li><Link to="/profile"><FontAwesomeIcon icon={faUser} className="icon" /> Profil</Link></li>
-             <li><Link to="/gallery"><FontAwesomeIcon icon={faImages} className="icon" /> Galeria</Link></li>
-             <li><Link to="/album"><FontAwesomeIcon icon={faImages} className="icon" /> Album</Link></li>
-    <li onClick={onLogout}><FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Wyloguj</li>
-  </>
+   <>
+        <li><Link to="/profile"><FontAwesomeIcon icon={faUser} className="icon" /> Profil</Link></li>
+        <li><Link to="/gallery"><FontAwesomeIcon icon={faImages} className="icon" /> Galeria</Link></li>
+        <li><Link to="/album"><FontAwesomeIcon icon={faPhotoVideo} className="icon" /> Albumy</Link></li>
+       <li><Link to="/todos"><FontAwesomeIcon icon={faClipboardList} className="icon" /> Todos</Link></li>
+       <li><Link to="/users"><FontAwesomeIcon icon={faUsers} className="icon" /> Użytkownicy</Link></li>
+      <li onClick={onLogout}><FontAwesomeIcon icon={faSignOutAlt} className="icon" /> Wyloguj</li>
+ </>
 )}
-        <li><FontAwesomeIcon icon={faSearch} className="icon" /> Wyszukaj</li>
-        <li><FontAwesomeIcon icon={faHeart} className="icon" /> Powiadomienia</li>
         {!isLoggedIn && <>
-          <li onClick={onRegisterClick}><FontAwesomeIcon icon={faUserPlus} className="icon" /> Rejestracja</li>
-          <li onClick={onLoginClick}><FontAwesomeIcon icon={faSignInAlt} className="icon" /> Logowanie</li>
         </>}
       </ul>
     </aside>

@@ -61,4 +61,21 @@
   .add-image-button:hover {
     background-color: #365899;
   }
+  .photos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 10px; 
+  }
+ 
+  .photo-item img {
+    width: 100%; 
+    height: auto;
+  }
+  
+  .photo-title {
+    font-size: 14px;
+    color: #333; 
+    margin-top: 5px; 
+    text-align: center; 
+  }
   
